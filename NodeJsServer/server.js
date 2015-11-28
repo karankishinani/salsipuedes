@@ -32,7 +32,7 @@ io.on('connection', function (socket) {
             }
             /* Verificar si esto es necesario:
             else {
-                console.log(clients[i].data.name + " has in Map in");
+                console.log(clients[i].data.name + " has Map in");
             }*)
             
 
