@@ -10,8 +10,8 @@ Project Manager:
 TeamWork:
 * Axel - Vladimir - Erick - Tobar - Jorge	(Equipo A)
 * Arana - Jonathan - Gilberto				(Equipo B)
-* Diego - Good - Yanis						(Equipo C)
-* Karan - Ibarra - Troby - Pinzón - Yi		(Equipo D)					
+* Diego - Troby - Yanis						(Equipo C)
+* Karan - Ibarra - Good - Pinzón - Yi		(Equipo D)					
 * 					
 
 ##FAQ
