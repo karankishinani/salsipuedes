@@ -38,7 +38,7 @@ En ella se deben programar cada una de las funciones que ejecutan los queries.
 	Manda mensaje de exito o error utilizando console.log
 
 ###on.register
--Permite crear un usuario nuevo
+        -Permite crear un usuario nuevo
 Manda mensaje de exito o error enviando la .emit('registersuccess') or unsuccess
 
 ####dataSetup.addUser
@@ -48,44 +48,44 @@ Manda mensaje de exito o error enviando la .emit('registersuccess') or unsuccess
 
 ##Equipo B
 ###on.login
--recibe data con atributos .name, .password, .character y valida que exista un usuario con nombre y contraseña iguales.
+    -recibe data con atributos .name, .password, .character y valida que exista un usuario con nombre y contraseña iguales.
 Manda mensaje de exito o error enviando la .emit('loginsuccess') or unsuccess
 ####dataSetup.searchUser
 	-ejecuta query de busqueda
 
-De ser exito envia broadcast.emit('playerconnected'){ name}
-y agrega usuario al socket
+    De ser exito envia broadcast.emit('playerconnected'){ name}
+    y agrega usuario al socket
 
-y envia broadcast.emit('swapPlayer'){id, position, job}//osea envia a todos los jugadores el id posicion y lo que es el jugador por primera vez
+    y envia broadcast.emit('swapPlayer'){id, position, job}//osea envia a todos los jugadores el id posicion y lo que es el jugador por primera vez
 
-***Vease diferencia swapAllplayer
+    ***Vease diferencia swapAllplayer
 
 
 ##Equipo C
 ###on.loadGame
--envia al cliente la posición de todos los jugadores .emit('swapAllPlayer'){name, position, job}
-***Vease diferencia swapPlayer
+    -envia al cliente la posición de todos los jugadores .emit('swapAllPlayer'){name, position, job}
+    ***Vease diferencia swapPlayer
 
 ###.move
--envia a todos bradcast.emit('playermove'){name, position}
+    -envia a todos broadcast.emit('playermove'){name, position}
 
 
 ##Equipo D
 ###.partidaTerminada
--envia al servidor los resultados de la partida
-ver diseño base de datos para ver que envían
+    -envia al servidor los resultados de la partida
+    ver diseño base de datos para ver que envían
 
 ###on.respond
--el usuario responde al ping que se le envió
+    -el usuario responde al ping que se le envió
 
 ###ping
-desde el servidor se envía petición al usuario hacer en este archivo function ping(client){client.emit('ping'){}} o algo parecido
+    desde el servidor se envía petición al usuario hacer en este archivo function ping(client){client.emit('ping'){}} o algo parecido
 
 ###disconnect
--Desconecta jugador desde el servidor, ya sea baneado o bajo ping o whatever
-hacer en este archivo function disconnect(client){client.emit('disconnect'){}} o algo parecido y sacarlo del socket
+    -Desconecta jugador desde el servidor, ya sea baneado o bajo ping o whatever
+    hacer en este archivo function disconnect(client){client.emit('disconnect'){}} o algo parecido y sacarlo del socket
 
 ###on.disconnect
--Desconecta al jugador por petición del mismo usuario
+    -Desconecta al jugador por petición del mismo usuario
 
 
