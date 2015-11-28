@@ -48,7 +48,8 @@ Manda mensaje de exito o error enviando la .emit('registersuccess') or unsuccess
 
 ##Equipo B
 ###on.login
-    -recibe data con atributos .name, .password, .character y valida que exista un usuario con nombre y contraseña iguales.
+    -recibe data con atributos .name, .password, .character y valida que exista 
+    un usuario con nombre y contraseña iguales.
 Manda mensaje de exito o error enviando la .emit('loginsuccess') or unsuccess
 ####dataSetup.searchUser
 	-ejecuta query de busqueda
@@ -56,14 +57,16 @@ Manda mensaje de exito o error enviando la .emit('loginsuccess') or unsuccess
     De ser exito envia broadcast.emit('playerconnected'){ name}
     y agrega usuario al socket
 
-    y envia broadcast.emit('swapPlayer'){id, position, job}//osea envia a todos los jugadores el id posicion y lo que es el jugador por primera vez
+    y envia broadcast.emit('swapPlayer'){id, position, job}//osea envia a todos los 
+    jugadores el id posicion y lo que es el jugador por primera vez
 
     ***Vease diferencia swapAllplayer
 
 
 ##Equipo C
 ###on.loadGame
-    -envia al cliente la posición de todos los jugadores .emit('swapAllPlayer'){name, position, job}
+    -envia al cliente la posición de todos los jugadores 
+    .emit('swapAllPlayer'){name, position, job}
     ***Vease diferencia swapPlayer
 
 ###.move
@@ -79,11 +82,13 @@ Manda mensaje de exito o error enviando la .emit('loginsuccess') or unsuccess
     -el usuario responde al ping que se le envió
 
 ###ping
-    desde el servidor se envía petición al usuario hacer en este archivo function ping(client){client.emit('ping'){}} o algo parecido
+    desde el servidor se envía petición al usuario hacer en este archivo function 
+    ping(client){client.emit('ping'){}} o algo parecido
 
 ###disconnect
     -Desconecta jugador desde el servidor, ya sea baneado o bajo ping o whatever
-    hacer en este archivo function disconnect(client){client.emit('disconnect'){}} o algo parecido y sacarlo del socket
+    hacer en este archivo function disconnect(client){client.emit('disconnect'){}} 
+    o algo parecido y sacarlo del socket
 
 ###on.disconnect
     -Desconecta al jugador por petición del mismo usuario
