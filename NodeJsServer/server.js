@@ -16,10 +16,8 @@ io.on('connection', function (socket) {
 	socket.on('disconnect', function (){
 
         socket.broadcast.emit('Playerdisconnected', {
-            
             name : currentClient.data.name,
         });
-        socket.broadcast.emit('disconnected', currentClient);
         
         for (i = 0; i < clients.length; i++) {
             
@@ -39,6 +37,8 @@ io.on('connection', function (socket) {
         }
         
     })
+
+    // 
 
 
 });
