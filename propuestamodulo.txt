@@ -1,0 +1,62 @@
+//Segun el MER, no almacenamos la posición, aunque lo mantuvimos asi habria que ver como se envia ese valor  
+
+//Este iria en el datasetup
+this.UpdatePosition = function (user, value, callback) {
+        
+        var dataUpdate = {
+
+            Position : value,
+        }
+        
+        db.query("UPDATE user set ? WHERE user_name = ? ",[dataUpdate,user], function (err, data) {
+            
+            if (err) { console.error(err); }
+            
+            callback(err, data);
+        });
+
+    };
+
+//Estos van en el lado del cliente 
+socket.on('UpdatePosition', function (data) { 
+
+        datasetup.UpdatePosition(currentClient.data.username, currentClient.position, function (err, dataP) {
+
+        });
+
+    });
+
+socket.on('move', function (data){
+
+        currentClient.position = data.position;
+        
+        socket.broadcast.emit('PlayerMove', {
+            name : currentClient.data.username,
+            Position : currentClient.position,
+        });
+    })
+
+//Por lo qu entendemos, al ajustar esta e iniciar una partida inicia a posición de cada uno en pantalla 
+socket.on('LoadMap', function () {
+
+        //console.log("LoadMap ");
+        for (i = 0; i < clients.length; i++) {
+            
+            
+            if (clients[i].data.username === currentClient.data.username) {
+
+            } else {
+                //console.log(currentClient.data.name + " has LoadMap in : " + clients.length);
+
+                socket.emit('swapAllPlayer', {
+                    Name : clients[i].data.username,
+                    Id : clients[i].id_usuario,
+                    Position : clients[i].position,
+                    Color : clients[i].color,
+                })
+            }
+            
+        }
+
+    });
+//En caso de utilizar este, no sabriamos si el script de LoadMap se mantendría igual al del ejemplo
