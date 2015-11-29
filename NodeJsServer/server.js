@@ -18,7 +18,7 @@ io.on('connection', function (socket) {
 		if (success)
 		{
 			socket.broadcast.emit('playerconnected', {name: currentClient.data.name});       // nombres reservados..?
-			socket.broadcast.emit('swapPlayer', {name: currentClient.data.name, id: currentClient.id, position: currentClient.position, color: currentClient.color}); // ^
+			socket.broadcast.emit('swapPlayer', {name: currentClient.data.name, id: currentClient.id, position: currentClient.position, color: currentClient.color}); // nombres reservados?
 			//add player to socket
 
 		}
