@@ -4,7 +4,7 @@ var datasetup = require('./database_client/databaseClient.js');
 
 console.log("Start Version " + datasetup.version);
 
-var clients = []; // Arreglo con la lista de clientes conectados al server
+var clients = []; // Arreglo con la lista de clientes conectados al servern con log in
 
 io.on('connection', function (socket) {
 	var currentClient;
@@ -12,7 +12,6 @@ io.on('connection', function (socket) {
 
 
 	// DISCONNECT por peticion del usuario
-	// revisar si esto podría funcionar
 	socket.on('disconnect', function (){
 
         socket.broadcast.emit('Playerdisconnected', {
@@ -20,7 +19,6 @@ io.on('connection', function (socket) {
         });
         
         for (i = 0; i < clients.length; i++) {
-            
             if (clients[i].data.name === currentClient.data.name) {
                 console.log(clients[i].data.name + " has been disconnected");
                 /* Verificar si incluir esto:
@@ -28,18 +26,9 @@ io.on('connection', function (socket) {
                 }); */
                 clients.splice(i,1);
             }
-            /* Verificar si esto es necesario:
-            else {
-                console.log(clients[i].data.name + " has Map in");
-            }*)
-            
-
         }
         
     })
-
-    // 
-
 
 });
 
