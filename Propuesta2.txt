@@ -1,0 +1,40 @@
+//Métodos para el client side
+
+//Le envia la posición actual al servidor del jugador cliente, lo podemos mantener igual que el chino
+socket.on('UpdatePosition', function (data) { 
+
+        datasetup.UpdatePosition(currentClient.data.username, currentClient.position, function (err, dataP) {
+        });
+
+    });
+	
+//Para registrar el movimiento igual podemos mantener la estructura que utilizaba el chino
+socket.on('move', function (data){
+
+        currentClient.position = data.position;
+        console.log(currentClient.data.username + " move to " + currentClient.position);
+
+			socket.emit('PlayerMove', {        //Si utiliza brodcast creo que solo los demas lo verian moverse
+            name : currentClient.data.username,
+            Position : currentClient.position,
+        });
+    });
+	
+//Método para el datasetup
+
+this.UpdatePosition = function (user, value, callback) {
+        
+        var dataUpdate = {
+
+            Position : value,
+        }
+        
+        socket.broadcast.emit(user, dataUpdate, function (err, data) { //Asi solo enviaria a los demas jugadores la posición 
+																	   //Sin necesidad de referirse a la bd para posición 
+            if (err) { console.error(err); }
+            
+            callback(err, data);
+        });
+
+    };
+	
