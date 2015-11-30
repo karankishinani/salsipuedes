@@ -1,0 +1,35 @@
+<style>
+  .circle {
+    width: 100px;
+    height: 100px;
+    background: green;
+    border-radius: 50%;
+    display: block;
+  }
+</style>
+
+<div class="circle" id="circle"></div>
+<button id="blue">mover</button>
+
+<script src="node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
+<script>
+  var socket = io('http://localhost:8000');
+  
+  socket.on('color',function (color,post) {  //Los demas reciben la posicion del que lo envia
+  console.log("Posicion del usuario: " + post)  
+  document.getElementById('circle').style.background = color;
+  blue.style.display = 'block'
+	});
+
+var blue = document.getElementById('blue');
+blue.addEventListener('click', function() {
+  socket.emit('color', Math.random());  //cada vez que oprime el boton envia la posicion
+  document.getElementById('circle').style.background = 'blue';
+  //document.getElementById('blue').style.display = 'none';
+})
+  
+  var blue = document.getElementById('blue');    
+  blue.addEventListener('click', function() {
+    document.getElementById('circle').style.background = 'blue';
+  })
+</script>
