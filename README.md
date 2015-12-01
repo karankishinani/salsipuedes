@@ -75,22 +75,26 @@ Manda mensaje de exito o error enviando la .emit('loginsuccess') or unsuccess
 
 ##Equipo D
 ###.partidaTerminada
-    -envia al servidor los resultados de la partida
+    Envia al servidor los resultados de la partida
     ver diseño base de datos para ver que envían
 
-###on.respond
-    -el usuario responde al ping que se le envió
+###on.logout
+    Desconecta jugador desde el servidor, por logout en el cliente
 
-###ping
-    desde el servidor se envía petición al usuario hacer en este archivo function 
-    ping(client){client.emit('ping'){}} o algo parecido
-
-###disconnect
-    -Desconecta jugador desde el servidor, ya sea baneado o bajo ping o whatever
-    hacer en este archivo function disconnect(client){client.emit('disconnect'){}} 
-    o algo parecido y sacarlo del socket
+Nota: se debe enviar un emit del cliente al server para hacer su logout
 
 ###on.disconnect
-    -Desconecta al jugador por petición del mismo usuario
+    Manejar cuando se desconecta el usuario del servidor
 
+###on.ping
+    el cliente responde con un pong al ping que se le envió
+
+Nota: Este módulo NO es necesario implementarlo
+
+###ping
+    desde el servidor se envía un ping al cliente 
+    hacer en este archivo function ping(client){client.emit('ping'){}} 
+    o algo parecido
+
+Nota: Este módulo NO es necesario implementarlo
 
