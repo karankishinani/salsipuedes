@@ -21,7 +21,7 @@ function datasetup() {
             callback(err);
         });
     };
-    //Editar modificar query 
+    //Listo
     this.addUser = function (id,user, pass, callback) {
 
         db.query("INSERT INTO usuario ( `id_usuario`, `username`, `password`) VALUES (?,?,?)",[id,user,pass], function (err, data) {
@@ -36,7 +36,7 @@ function datasetup() {
         });
 
     };
-    //Editar modificar query
+    //Listo
     this.loadallUser = function (callback) {
 
         var sql = 'select * from usuario';
