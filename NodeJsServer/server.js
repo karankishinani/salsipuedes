@@ -32,6 +32,49 @@ io.on('connection', function (socket) {
 		}
 
 
-	});
+// PARTIDA TERMINADA (Equipo D)
+    socket.on('partidaTerminada', function(data) {
+        /*    
+        LOS DATOS A ALMACENAR EN LA BD SON:
+        TABLA: Juega
+        DATOS: id_usuario, id_partida, personaje (runner o chaser), Equipo ganador (true o false)
+        */
+        datasetup.guardarPartida(data.name, data.partida, data.personaje, data.ganador, function(err, dataP) {});
+    });
+
+    // ON DISCONNECT al desconectarse el cliente del servidor (Equipo D)
+    socket.on('disconnect', function() {
+
+        socket.broadcast.emit('Playerdisconnected', {
+                name: currentClient.data.name,
+            });
+
+        for (i = 0; i < clients.length; i++) {
+            if (clients[i].data.name === currentClient.data.name) {
+                console.log(clients[i].data.name + " has been disconnected");
+                clients.splice(i, 1);
+            }
+        }
+
+    });
+
+    // LOGOUT (Equipo D)
+    socket.on('logout', function() {
+
+        // cerrar el socket del cliente
+        socket.disconect();
+
+        socket.broadcast.emit('Playerdisconnected', {
+                name: currentClient.data.name,
+            });
+
+        for (i = 0; i < clients.length; i++) {
+            if (clients[i].data.name === currentClient.data.name) {
+                console.log(currentClient.data.name + " has logged out");
+                clients.splice(i, 1);
+            }
+        }
+
+    });
 
 });
