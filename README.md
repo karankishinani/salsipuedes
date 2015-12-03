@@ -86,12 +86,12 @@ Nota: se debe enviar un emit del cliente al server para hacer su logout
 ###on.disconnect
     Manejar cuando se desconecta el usuario del servidor
 
-###on.ping
+###on.ping (no necesario)
     el cliente responde con un pong al ping que se le envió
 
 Nota: Este módulo NO es necesario implementarlo
 
-###ping
+###ping (no necesario)
     desde el servidor se envía un ping al cliente 
     hacer en este archivo function ping(client){client.emit('ping'){}} 
     o algo parecido
