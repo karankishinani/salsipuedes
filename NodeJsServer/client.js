@@ -1,5 +1,15 @@
 socket.on('connect', function() {
 
+     //Equipo B
+    
+    socket.on('login'), function(data)  {
+        //TODO
+    }
+
+    //socket.broadcast.emit('playerconnected', {name: currentClient.data.name});   Equipo B    
+    //socket.broadcast.emit('swapPlayer', {name: currentClient.data.name, id: currentClient.id, position: currentClient.position, color: currentClient.color}); // swapAllPlayer ? Equipo B
+    //socket.emit('loginUnsuccess', { message : 'usuario o password incorrecto'})   Equipo B
+    
     // LOGOUT Lanzar evento de desconectar por logout en el cliente (Equipo D)
     socket.emit('logout');
 

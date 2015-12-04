@@ -11,25 +11,27 @@ io.on('connection', function (socket) {
 	//Put your socket.on events here
 
 
-	//TODO: agregar usuario al socket
+	//Grupo B Login
 
-	socket.on('login', function(data){  // parametros aqui? y es data? 
+    socket.on('login', function(data)  {  
 
-		var success = datasetup.searchUser(data.name, data.password, data.character); // esta funcion retornara algo?
+        if (datasetup.searchUser(data.name, data.password); // si es exitosa la busqueda... "SELECT Username, Password FROM USUARIO WHERE Username = user and Password = pass" 
 
-		if (success)
-		{
-			socket.broadcast.emit('playerconnected', {name: currentClient.data.name});       // nombres reservados..?
-			socket.broadcast.emit('swapPlayer', {name: currentClient.data.name, id: currentClient.id, position: currentClient.position, color: currentClient.color}); // nombres reservados?
-			//add player to socket
+        {
+            socket.broadcast.emit('playerconnected', {name: currentClient.data.name});       
+            socket.broadcast.emit('swapPlayer', {name: currentClient.data.name, id: currentClient.id, position: currentClient.position, color: currentClient.color}); // swapAllPlayer ?
+            socket.connect();
 
-		}
-		else
-		{
-			socket.emit('loginUnsuccess', {         //referencia "app.js"
-                        message : 'User not found'
+        }
+        else
+        {
+            console.error("Data not found"); // donde el usuario o el password esten incorrectos
+            socket.emit('loginUnsuccess', {         
+                        message : 'usuario o password incorrecto'
                     });
-		}
+        }
+
+    });
 
 
 // PARTIDA TERMINADA (Equipo D)
