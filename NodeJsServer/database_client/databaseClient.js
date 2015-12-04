@@ -21,7 +21,7 @@ function datasetup() {
             callback(err);
         });
     };
-    //Listo
+    //Equipo A
     this.addUser = function (id,user, pass, callback) {
 
         db.query("INSERT INTO usuario ( `id_usuario`, `username`, `password`) VALUES (?,?,?)",[id,user,pass], function (err, data) {
@@ -36,7 +36,7 @@ function datasetup() {
         });
 
     };
-    //Listo
+    //Equipo A
     this.loadallUser = function (callback) {
 
         var sql = 'select * from usuario';
@@ -47,16 +47,16 @@ function datasetup() {
             callback(err, data);
          });
     };
+    // Guardar datos despues de PARTIDA TERMINADA (Equipo D)
+    this.guardarPartida = function(user, partida, personaje, ganador, callback) {
+        db.query("INSERT INTO Juega ( `id_usuario`, `id_partida`, `personaje`,`ganador`) VALUES (?,?,?,?)", [user, partida, personaje, ganador], function(err, data) {
+            if (err) {
+                console.error(err);
+            }
+            callback(err, data);
+        });
+    };
 }
 
 module.exports = new datasetup;
 
-// Guardar datos despues de PARTIDA TERMINADA (Equipo D)
-this.guardarPartida = function(user, partida, personaje, ganador, callback) {
-    db.query("INSERT INTO Juega ( `id_usuario`, `id_partida`, `personaje`,`ganador`) VALUES (?,?,?,?)", [user, partida, personaje, ganador], function(err, data) {
-        if (err) {
-            console.error(err);
-        }
-        callback(err, data);
-    });
-};
