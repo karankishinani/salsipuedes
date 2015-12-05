@@ -34,11 +34,11 @@ io.on('connection', function (socket) {
     });
 	
 //MOVIMIENTO (EQUIPO C)
-	socket.on('posicionjugador',function(positionX,positionY,positionZ){ //Recibe la distancia del cliente
-	 socket.broadcast.emit('nuevaposicion',positionX,positionY,positionZ)	//le envia esta nueva distancia a los demas clientes 
+	socket.on('posicionjugador',function(posit){ //Recibe la distancia del cliente
+	 socket.broadcast.emit('nuevaposicion',posit)	//le envia esta nueva distancia a los demas clientes 
 	 for (i = 0; i < clients.length; i++) {
             if (clients[i].data.name === currentClient.data.name) {
-                console.log(clients[i].data.name + " se ha movido a la posicion " + positionX + " en X "+ positionY + " en Y "+ positionZ + " en Z"); //Imprime un mensaje en consolade la nueva posicion del jugador actual
+                console.log(clients[i].data.name + " se ha movido a la posicion " + posit); //Imprime un mensaje en consolade la nueva posicion del jugador actual
                 clients.splice(i, 1);
             }
         }

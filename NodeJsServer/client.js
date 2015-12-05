@@ -14,8 +14,8 @@ socket.on('connect', function() {
     socket.emit('logout');
 
 	//POSICION DEL JUGADOR (Equipo C)
-	socket.emit('posicionjugador',jugador.transform.position.x,jugador.transform.position.y,jugador.transform.position.z); //Le envía la posición que calcula dentro del metodo de seguir jugador
-	socket.on('nuevaposicion',function(postX,postY,postZ){ //Recibe la nueva posicion del jugador
+	socket.emit('posicionjugador',jugador.transform.position); //Le envía la posición que calcula dentro del metodo de seguir jugador
+	socket.on('nuevaposicion',function(post){ //Recibe la nueva posicion del jugador
 		//Deberia implementarse en el código del cliente que renderize o haga algo con la nueva posicion obtenida
 	});
 
