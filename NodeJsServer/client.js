@@ -13,7 +13,13 @@ socket.on('connect', function() {
     // LOGOUT Lanzar evento de desconectar por logout en el cliente (Equipo D)
     socket.emit('logout');
 
-    // PARTIDA TERMINADA (Equipo D)
+	//POSICION DEL JUGADOR (Equipo C)
+	socket.emit('posicionjugador',distacia); //Le envía la posición que calcula dentro del metodo de colisión
+	socket.on('nuevaposicion',function(post){ //Recibe la nueva posicion del jugador
+		//Deberia implementarse en el código del cliente que renderize o haga algo con la nueva posicion obtenida
+	});
+
+   // PARTIDA TERMINADA (Equipo D)
     socket.emit('partidaTerminada', {
         // TODO: agregar datos a enviar para grabar a la BD en formato JSON
         // data.name, data.partida, data.personaje, data.ganador

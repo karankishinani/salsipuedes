@@ -32,6 +32,18 @@ io.on('connection', function (socket) {
         }
 
     });
+	
+//MOVIMIENTO (EQUIPO C)
+	socket.on('posicionjugador',function(position){ //Recibe la distancia del cliente
+	 socket.broadcast.emit('nuevaposicion',position)	//le envia esta nueva distancia a los demas clientes 
+	 for (i = 0; i < clients.length; i++) {
+            if (clients[i].data.name === currentClient.data.name) {
+                console.log(clients[i].data.name + " se ha movido a la posicion " + position); //Imprime un mensaje en consolade la nueva posicion del jugador actual
+                clients.splice(i, 1);
+            }
+        }
+	});
+	
 
 
 // PARTIDA TERMINADA (Equipo D)
