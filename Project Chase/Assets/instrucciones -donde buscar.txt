@@ -1,0 +1,6 @@
+segun Ivan
+
+posicion jugador - colision
+login, registro - pantalla 1 pantall2
+cargar mapa - pantalla 2 tal vez
+fin partida, no implementado - va en colision

@@ -4,9 +4,10 @@ function datasetup() {
     var mysql = require('mysql');
     var config = {
         host : '127.0.0.1',
+		port : '3307',
         user : 'root',
-        password : '',
-        database : 'mydb',
+        password : '-DxDiag95',
+        database : 'prueba',
     }
 
     //put your this.function here
@@ -22,9 +23,9 @@ function datasetup() {
         });
     };
     //Equipo A
-    this.addUser = function (id,user, pass, callback) {
+    this.addUser = function (user, pass, callback) {
 
-        db.query("INSERT INTO usuario ( `id_usuario`, `username`, `password`) VALUES (?,?,?)",[id,user,pass], function (err, data) {
+        db.query("INSERT INTO usuario ( `username`, `password`) VALUES (?,?)",[user,pass], function (err, data) {
             if (err) { 
                 console.log('Error al registrar usuario');
                 console.error(err); 
@@ -51,15 +52,8 @@ function datasetup() {
     //Equipo B
     this.searchUser = function (user, pass, callback) {
 
-        db.query("SELECT Username, Password FROM USUARIO WHERE Username = user and Password = pass", [user, pass], function (err, data) { 
-            if (err) { 
-                console.log('usuario o password incorrecto');
-                console.error(err); 
-            }
-            else{ 
-                console.log('login exitoso');
-            }
-            callback(err, data);  //retorna algo?
+        db.query("SELECT Username, Password FROM USUARIO WHERE Username = \"" +user+ "\" AND Password = \""+pass+"\"", function (err, data) { 
+            callback(err, data[0]);  //retorna algo?
         });
 
     };

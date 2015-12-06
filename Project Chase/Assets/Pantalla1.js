@@ -8,9 +8,9 @@ var txtusuario : String = "";
 var txtcontrasena : String = "";
 var booservidor = true;
 var booservidor2 = true;
-
 var windowRect : Rect = Rect (150,100,1050,400);
 
+var nm :  NetworkManager;
 
 function Awake(){
 
@@ -63,10 +63,17 @@ if(GUI.Toggle(Rect (tamx/2, tamy/4 + (tambotony * 4), tamlabelx, tamlabely), boo
    booservidor2= true;
 } 
 
-  
- GUI.Button(Rect(tamx/2 - tamlabelx, tamy/4 + (tambotony * 6), 90, 30), "Conectar");  
+ 
+nm = GetComponent(NetworkManager);
+ if(GUI.Button(Rect(tamx/2 - tamlabelx, tamy/4 + (tambotony * 6), 90, 30), "Conectar")){
+	nm.login(txtusuario, txtcontrasena);
+ };  
  GUI.Button(Rect(tamx/2 + tambotonx - 80, tamy/4 + (tambotony * 6), 80, 30), "Cancelar"); 
- GUI.Button(Rect(tamx/2 - 55, tamy/4 + (tambotony * 8), 110, 30), "Registrar"); 
+ if(GUI.Button(Rect(tamx/2 - 55, tamy/4 + (tambotony * 8), 110, 30), "Registrar")){
+	nm.signup(txtusuario, txtcontrasena); 
+ }
+ 
+ 
  
  /*conexiones de los botones*/
 

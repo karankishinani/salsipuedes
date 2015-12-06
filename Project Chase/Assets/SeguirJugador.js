@@ -1,8 +1,9 @@
 ﻿var jugador : GameObject;
 var distancia : int = 15;
 
-function Start () {
 
+
+function Start () {
 }
 
 function Update () {
