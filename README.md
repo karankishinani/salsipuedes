@@ -4,16 +4,14 @@ This project is a NodeJS game server that connects to a Unity game and lets play
 It’s born in an undergraduate class of Database under the direction of professor Victor López in the UTP (Universidad
 Tecnológica de Panamá), this project is the final test of the entire classroom. 
 
-Project Manager:
-* Carlos
-
 TeamWork:
 * Axel - Vladimir - Erick - Tobar - Jorge		(Equipo A)
 * Arana - Jonathan - Gilberto				(Equipo B)
-* Diego - Troby - Yanys				(Equipo C)
-* Karan - Ibarra - Good - Pinzón - Yi			(Equipo D)					
+* Diego - Troby - Yanys					(Equipo C)
+* Karan - Ibarra - Good - Pinzón - Yi			(Equipo D)
+* Carlos						(Org.)
 
-##FAQ
+## FAQ
 ¿Que es .on?
 on, evento del socket del servidor que es un receptor, cuando recibe solicitud del cliente se activa evento .on('evento')
 ¿Que es .emit?
@@ -27,31 +25,31 @@ dataSetup, es una función del archivo dataSetup.js que permite hacer coneccion 
 En ella se deben programar cada una de las funciones que ejecutan los queries.
 
 
-#Funciones
-##Equipo A
-###dataSetup.connect
+# Funciones
+## Equipo A
+### dataSetup.connect
 	-Conecta con la base de datos
 	Manda mensaje de exito o error utilizando console.log
 
-####dataSetup.loadAllUser
+#### dataSetup.loadAllUser
 	-Alli mismo si hay exito busca si hay usuarios registrados
 	Manda mensaje de exito o error utilizando console.log
 
-###on.register
+### on.register
         -Permite crear un usuario nuevo
 Manda mensaje de exito o error enviando la .emit('registersuccess') or unsuccess
 
-####dataSetup.addUser
+#### dataSetup.addUser
 	-De tener exito se ejecuta un query en la base de datos que inserta el usuario.
 	Manda mensaje de exito o error utilizando console.log
 
 
-##Equipo B
-###on.login
+## Equipo B
+### on.login
     -recibe data con atributos .name, .password, .character y valida que exista 
     un usuario con nombre y contraseña iguales.
 Manda mensaje de exito o error enviando la .emit('loginsuccess') or unsuccess
-####dataSetup.searchUser
+#### dataSetup.searchUser
 	-ejecuta query de busqueda
 
     De ser exito envia broadcast.emit('playerconnected'){ name}
@@ -63,35 +61,35 @@ Manda mensaje de exito o error enviando la .emit('loginsuccess') or unsuccess
     ***Vease diferencia swapAllplayer
 
 
-##Equipo C
-###on.loadGame
+## Equipo C
+### on.loadGame
     -envia al cliente la posición de todos los jugadores 
     .emit('swapAllPlayer'){name, position, job}
     ***Vease diferencia swapPlayer
 
-###.move
+### .move
     -envia a todos broadcast.emit('playermove'){name, position}
 
 
-##Equipo D
-###.partidaTerminada
+## Equipo D
+### .partidaTerminada
     Envia al servidor los resultados de la partida
     ver diseño base de datos para ver que envían
 
-###on.logout
+### on.logout
     Desconecta jugador desde el servidor, por logout en el cliente
 
 Nota: se debe enviar un emit del cliente al server para hacer su logout
 
-###on.disconnect
+### on.disconnect
     Manejar cuando se desconecta el usuario del servidor
 
-###on.ping (no necesario)
+### on.ping (no necesario)
     el cliente responde con un pong al ping que se le envió
 
 Nota: Este módulo NO es necesario implementarlo
 
-###ping (no necesario)
+### ping (no necesario)
     desde el servidor se envía un ping al cliente 
     hacer en este archivo function ping(client){client.emit('ping'){}} 
     o algo parecido
